@@ -1,0 +1,59 @@
+---
+# file: prometheus-rpm/handlers/main.yml
+
+- name: update rpm cache
+  yum:
+    update_cache: yes
+
+- name: systemctl daemon-reload
+  command: /bin/systemctl daemon-reload
+  when: "ansible_service_mgr == 'systemd' or (ansible_service_mgr == 'COMMAND' and ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7')"
+
+# Requires Ansible 2.4
+# - name: systemctl daemon-reload
+#   systemd: daemon_reload=yes
+
+- name: restart alertmanager
+  service: name=alertmanager state=restarted
+
+- name: restart apache_exporter
+  service: name=apache_exporter state=restarted
+
+- name: restart blackbox_exporter
+  service: name=blackbox_exporter state=restarted
+
+- name: restart consul_exporter
+  service: name=consul_exporter state=restarted
+
+- name: restart elasticsearch_exporter
+  service: name=elasticsearch_exporter state=restarted
+
+- name: restart graphite_exporter
+  service: name=graphite_exporter state=restarted
+
+- name: restart haproxy_exporter
+  service: name=haproxy_exporter state=restarted
+
+- name: restart jmx_exporter
+  service: name=jmx_exporter state=restarted
+
+- name: restart mysqld_exporter
+  service: name=mysqld_exporter state=restarted
+
+- name: restart node_exporter
+  service: name=node_exporter state=restarted
+
+- name: restart prometheus
+  service: name=prometheus state=restarted
+
+- name: restart pushgateway
+  service: name=pushgateway state=restarted
+
+- name: restart redis_exporter
+  service: name=redis_exporter state=restarted
+
+- name: restart sachet
+  service: name=sachet state=restarted
+
+- name: restart snmp_exporter
+  service: name=snmp_exporter state=restarted
