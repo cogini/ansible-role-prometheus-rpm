@@ -1,0 +1,19 @@
+POSTGRES_EXPORTER_OPTS="{{ prometheus_rpm_postgres_exporter_opts }}"
+{% if prometheus_rpm_postgres_exporter_data_source_name is defined %}
+DATA_SOURCE_NAME="{{ prometheus_rpm_postgres_exporter_data_source_name }}"
+{% endif %}
+{% if prometheus_rpm_postgres_exporter_data_source_uri is defined %}
+DATA_SOURCE_URI="{{ prometheus_rpm_postgres_exporter_data_source_uri }}"
+{% endif %}
+{% if prometheus_rpm_postgres_exporter_data_source_user is defined %}
+DATA_SOURCE_USER="{{ prometheus_rpm_postgres_exporter_data_source_user }}"
+{% endif %}
+{% if prometheus_rpm_postgres_exporter_data_source_user_file is defined %}
+DATA_SOURCE_USER_FILE="{{ prometheus_rpm_postgres_exporter_data_source_user_file }}"
+{% endif %}
+{% if prometheus_rpm_postgres_exporter_data_source_pass is defined %}
+DATA_SOURCE_PASS="{{ prometheus_rpm_postgres_exporter_data_source_pass }}"
+{% endif %}
+{% if prometheus_rpm_postgres_exporter_data_source_pass_file is defined %}
+DATA_SOURCE_PASS_FILE="{{ prometheus_rpm_postgres_exporter_data_source_pass_file }}"
+{% endif %}

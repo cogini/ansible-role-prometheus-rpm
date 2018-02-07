@@ -63,6 +63,11 @@
   when: "'consul_exporter' in prometheus_rpm_components and prometheus_rpm_consul_exporter_opts is defined"
   notify: restart consul_exporter
 
+- name: Configure collectd_exporter
+  template: src=etc/default/collectd_exporter.j2 dest=/etc/default/collectd_exporter owner=root group=root mode=0644
+  when: "'collectd_exporter' in prometheus_rpm_components and prometheus_rpm_collectd_exporter_opts is defined"
+  notify: restart collectd_exporter
+
 - name: Configure elasticsearch_exporter
   template: src=etc/default/elasticsearch_exporter.j2 dest=/etc/default/elasticsearch_exporter owner=root group=root mode=0644
   when: "'elasticsearch_exporter' in prometheus_rpm_components and prometheus_rpm_elasticsearch_exporter_opts is defined"
@@ -92,6 +97,11 @@
   template: src=etc/default/node_exporter.j2 dest=/etc/default/node_exporter owner=root group=root mode=0644
   when: "'node_exporter' in prometheus_rpm_components and prometheus_rpm_node_exporter_opts is defined"
   notify: restart node_exporter
+
+- name: Configure postgres_exporter
+  template: src=etc/default/postgres_exporter.j2 dest=/etc/default/postgres_exporter owner=root group=root mode=0644
+  when: "'postgres_exporter' in prometheus_rpm_components and prometheus_rpm_postgres_exporter_opts is defined"
+  notify: restart postgres_exporter
 
 - name: Configure prometheus
   template: src=etc/default/prometheus.j2 dest=/etc/default/prometheus owner=root group=root mode=0644
