@@ -33,7 +33,7 @@ prometheus_rpm_package_state: present
 
 # These are the defaults, define them and they will override the /etc/default config files
 #
-# prometheus_rpm_alertmanager_opts
+# prometheus_rpm_alertmanager_opts: ""
 # prometheus_rpm_blackbox_exporter_opts: ""
 # prometheus_rpm_prometheus_opts: '--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/var/lib/prometheus/data'
 # prometheus_rpm_sachet_exporter_opts: "-config /etc/prometheus/sachet.yml"
