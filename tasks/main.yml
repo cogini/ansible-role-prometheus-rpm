@@ -40,6 +40,12 @@
   - name: Start service
     service: name={{ item }} state=started enabled=yes
     with_items: "{{ prometheus_rpm_components }}"
+    when: "item not in ['prometheus', 'prometheus2']"
+
+  - name: Start service
+    service: name=prometheus state=started enabled=yes
+    with_items: "{{ prometheus_rpm_components }}"
+    when: "item in ['prometheus', 'prometheus2']"
 
   when: ansible_os_family == 'RedHat'
 
