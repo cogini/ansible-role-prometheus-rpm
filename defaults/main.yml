@@ -1,6 +1,4 @@
 ---
-ansible_become: true
-
 # Compoenents to install
 prometheus_rpm_components: []
 
