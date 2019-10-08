@@ -20,7 +20,7 @@
       baseurl: https://packagecloud.io/prometheus-rpm/release/el/7/$basearch
       gpgcheck: yes
       repo_gpgcheck: yes
-      metadata_expire: 300
+      metadata_expire: "300"
       gpgkey: "https://packagecloud.io/prometheus-rpm/release/gpgkey https://raw.githubusercontent.com/lest/prometheus-rpm/master/RPM-GPG-KEY-prometheus-rpm"
       sslverify: yes
       sslcacert: /etc/pki/tls/certs/ca-bundle.crt
@@ -33,8 +33,7 @@
     when: import_key.changed
 
   - name: Install packages
-    yum: name={{ item }} state="{{ prometheus_rpm_package_state }}" update_cache=yes
-    with_items: "{{ prometheus_rpm_components }}"
+    yum: name={{ prometheus_rpm_components }} state="{{ prometheus_rpm_package_state }}" update_cache=yes
     notify: systemctl daemon-reload
 
   - name: Start service
