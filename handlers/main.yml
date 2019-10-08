@@ -6,8 +6,9 @@
     update_cache: yes
 
 - name: systemctl daemon-reload
-  command: /bin/systemctl daemon-reload
-  when: "ansible_service_mgr == 'systemd' or (ansible_service_mgr == 'COMMAND' and ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7')"
+  systemd:
+    daemon_reload: yes
+  when: "ansible_service_mgr == 'systemd'"
 
 # Requires Ansible 2.4
 # - name: systemctl daemon-reload
